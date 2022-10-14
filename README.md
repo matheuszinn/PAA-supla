@@ -13,9 +13,9 @@ Trabalho de Projeto e Análise de Algoritmos com o objetivo de implementar algun
 
 #### Algoritmos
 
-- [ ] Bubblesort
+- [x] Bubblesort
 - [ ] Mergesort
-- [ ] Quicksort
+- [x] Quicksort
 - [ ] Combsort
-- [ ] Beadsort
-- [ ] Insertionsort
+- [x] Beadsort
+- [x] Insertionsort
