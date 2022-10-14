@@ -1,8 +1,8 @@
-from sorting_algos import Quicksort
+from sorting_algos import Mergesort
 
 import random
 
 if __name__ == '__main__':
-    l = [i for i in range(1, 1000000)]
+    l = [i for i in range(1, 1000)]
     random.shuffle(l)
-    print(Quicksort().quicksort(l, 0, len(l) - 1)[1])
+    print(Mergesort().merge_sort(l)[1])
