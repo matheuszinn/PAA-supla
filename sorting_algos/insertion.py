@@ -1,56 +1,30 @@
-
-import copy as copy
-import random
 import time
-import sys
-
-random.seed(69420)
-
-# gera uma lista de tamanho "size" (10, 100, 1000, 10000, 20000, 30000,..., 1000000000)
 
 
-def generate_list(size):
+class InsertionSort:
+    def __init__(self) -> None:
+        self.comparacoes = 0
+        self.troca = 0
 
-    list = []
-    for p in range(size):
-        list.append(random.randint(1, 1000))
-    return list
+    def insertion_sort(self, list):
+        start_time = time.time()
 
-def insertion_sort(list):
-    old_list = copy.deepcopy(list)
-    num_trocas = 0
-    num_comp = 0
+        for p in range(1, len(list)):
+            aux = list[p]
 
-    for p in range(1, len(list)):
-        aux = list[p]
-        
-        q = p-1
-        num_comp = num_comp+1
+            q = p - 1
+            self.comparacoes = self.comparacoes + 1
 
-        while q >=0 and aux < list[q]:
-            num_comp=num_comp+1
-            list[q+1] = list[q]
-            q = q-1
-            num_trocas = num_trocas+1
-        list[q+1] = aux
+            while q >= 0 and aux < list[q]:
+                self.comparacoes = self.comparacoes + 1
+                list[q + 1] = list[q]
+                q = q - 1
+                self.troca = self.troca + 1
+            list[q + 1] = aux
 
-    print(old_list)
-    print(list)
-    print("trocas: {} \ncomparações: {}".format(num_trocas, num_comp))
-
-
-if __name__ == '__main__':
-    start_time = time.time()  # salva o tempo atual para calculo do tempo de execução
-    print('tempo iniciado')
-
-    list = generate_list(80000)
-    insertion_sort(list)
-
-    # realiza o calculo do tempo percorrido
-    execution_time = time.time() - start_time
-
-    print("tempo: {}".format(execution_time))
-    print("tamanho: {} bytes".format(sys.getsizeof(list)))
-    print('feito!')
-
-
+        execution_time = time.time() - start_time
+        return list, {
+            "time": execution_time,
+            "comparacoes": self.comparacoes,
+            "troca": self.troca,
+        }
