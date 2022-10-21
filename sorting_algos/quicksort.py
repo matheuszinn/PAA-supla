@@ -42,6 +42,3 @@ class Quicksort:
                 self.troca += 1
             self.comparacoes += 1
         return low - 1
-
-import random
-print(Quicksort().quicksort([random.randint(1,1000) for _ in range(1000)])[1])
