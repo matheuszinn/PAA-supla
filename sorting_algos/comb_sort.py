@@ -26,9 +26,7 @@ class CombSort:
         tempo_de_execucao = time.time() - tempo
 
         return A, {
-            {
                 "time": tempo_de_execucao,
                 "comparacoes": self.comparacoes,
                 "troca": self.troca,
             }
-        }
