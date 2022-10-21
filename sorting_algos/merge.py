@@ -13,9 +13,9 @@ class Mergesort:
         start_time = time.time()
         r = self.__top_down(arr)
         execution_time = time.time() - start_time
-        return r, infos_algoritmos(tempo=execution_time,
+        return r, infos_algoritmos(time=execution_time,
                                    comparacoes=self.comparacoes,
-                                   trocas=self.trocas)
+                                   troca=self.trocas)
 
     def __merge(self, _esq: list[int], _dir: list[int]) -> list[int]:
         result: list[int] = []
