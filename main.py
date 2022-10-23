@@ -8,7 +8,7 @@ from sorting_algos import (
     Mergesort,
     CombSort,
     BubbleSort,
-    BeadSort,
+    Shellsort,
     InsertionSort,
 )
 from rich.progress import (
@@ -27,12 +27,30 @@ import pandas as pd
 
 INPUT_DIR = Path(__file__).parent.resolve() / "inputs"
 ALGORITMOS = [
-    {"name": "Bubblesort", "fn": BubbleSort().bubble_sort},
-    {"name": "Insertionsort", "fn": InsertionSort().insertion_sort},
-    {"name": "Beadsort", "fn": BeadSort().bead_sort},
-    {"name": "Combsort", "fn": CombSort().combsort},
-    {"name": "Quicksort", "fn": Quicksort().quicksort},
-    {"name": "Mergesort", "fn": Mergesort().merge_sort},
+    {
+        "name": "Bubblesort",
+        "fn": BubbleSort().bubble_sort
+    },
+    {
+        "name": "Insertionsort",
+        "fn": InsertionSort().insertion_sort
+    },
+    {
+        "name": "Shellsort",
+        "fn": Shellsort().shellsort
+    },
+    {
+        "name": "Combsort",
+        "fn": CombSort().combsort
+    },
+    {
+        "name": "Quicksort",
+        "fn": Quicksort().quicksort
+    },
+    {
+        "name": "Mergesort",
+        "fn": Mergesort().merge_sort
+    },
 ]
 
 
@@ -40,7 +58,8 @@ def extract_file_name(fp):
     return str(fp).split("/")[-1]
 
 
-def create_data_dict(tam_lista, algoritmo, tipo_lista, tempo, comparacoes, trocas):
+def create_data_dict(tam_lista, algoritmo, tipo_lista, tempo, comparacoes,
+                     trocas):
     return {
         "tam_lista": tam_lista,
         "algoritmo": algoritmo,
@@ -56,7 +75,8 @@ def read_input_file(f):
         return list(map(lambda x: int(x), file.read()[1:-1].split(" ")))
 
 
-progress = Progress(TimeElapsedColumn(), BarColumn(), TextColumn("{task.description}"))
+progress = Progress(TimeElapsedColumn(), BarColumn(),
+                    TextColumn("{task.description}"))
 
 table = Table.grid()
 table.add_row(
@@ -66,8 +86,7 @@ table.add_row(
         border_style="green",
         padding=(2, 2),
         width=200,
-    )
-)
+    ))
 
 if __name__ == "__main__":
     # A pasta inputs não vai estar no diretório do programa, use os arquivos do repositório "PAA-generator"
@@ -92,9 +111,8 @@ if __name__ == "__main__":
 
             for idx, file in enumerate(files_paths):
                 file_name = extract_file_name(file)
-                tipo_lista, tam_lista = (lambda x: (x.split("_")[0], x.split("_")[1]))(
-                    file_name
-                )
+                tipo_lista, tam_lista = (
+                    lambda x: (x.split("_")[0], x.split("_")[1]))(file_name)
                 for algo in ALGORITMOS:
                     algo_name = algo["name"]
 
@@ -112,9 +130,8 @@ if __name__ == "__main__":
                         exec_info["comparacoes"],
                         exec_info["troca"],
                     )
-                    execution_data = execution_data.append(
-                        full_exec_data, ignore_index=True
-                    )
+                    execution_data = execution_data.append(full_exec_data,
+                                                           ignore_index=True)
                     console.log(
                         f"Finalizando arquivo {file_name} com algoritmo {algo_name}"
                     )

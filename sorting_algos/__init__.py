@@ -1,4 +1,4 @@
-from .bead import BeadSort
+from .shellsort import Shellsort
 from .bubble import BubbleSort
 from .insertion import InsertionSort
 from .quicksort import Quicksort
