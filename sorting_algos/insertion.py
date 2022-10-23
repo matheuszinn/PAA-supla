@@ -2,6 +2,7 @@ import time
 
 
 class InsertionSort:
+
     def __init__(self) -> None:
         self.comparacoes = 0
         self.troca = 0
