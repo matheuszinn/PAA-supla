@@ -33,9 +33,3 @@ class Shellsort:
             "comparacoes": self.comparacao,
             "troca": self.troca
         }
-
-
-import random
-
-print(Shellsort().shellsort([random.randint(1, 10000)
-                             for _ in range(10)])[0])
